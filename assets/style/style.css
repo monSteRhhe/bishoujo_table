@@ -30,16 +30,21 @@ tr.th-spacing > th.dot {
 }
 
 .root {
-    background-color: #FFF6F7;
     padding: 20px;
     pointer-events: none;
+}
+
+.container {
+    background-color: #FFF6F7;
+    width: fit-content;
+    padding: 10px;
 }
 
 #bishoujo-table {
     border-collapse: collapse;
 }
 
-img.display-tachie {
+.display-tachie {
     width: 120px;
     height: 180px;
     object-fit: cover;
