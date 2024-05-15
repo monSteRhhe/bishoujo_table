@@ -1,0 +1,80 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #FFF6F7;
+    font-size: 16px;
+    user-select: none;
+    font-family: 'SarasaGothicSC';
+}
+
+th {
+    max-width: 120px;
+    min-width: 120px;
+    font-weight: normal;
+}
+
+tr.th-spacing > th {
+    padding: 6px 0;
+}
+
+.blank {
+    padding: 1em 0 !important;
+}
+
+tr.th-spacing > th.dot {
+    font-size: 1em;
+}
+
+.root {
+    padding: 20px;
+    pointer-events: none;
+}
+
+#bishoujo-table {
+    background-color: #FFF6F7;
+    border-collapse: collapse;
+}
+
+img.display-tachie {
+    width: 120px;
+    height: 180px;
+    object-fit: cover;
+}
+
+.footer {
+    padding: 1em 1.5em;
+    border-top: 1px solid #000;
+}
+
+.footer span {
+    margin-left: 2em;
+    padding: 2px;
+    display: inline-flex;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.footer span:hover {
+    background-color: #000;
+    color: #FFF;
+    transition: all 0.3s ease;
+}
+
+img.svg-icon {
+    margin-right: 5px;
+}
+
+.footer span:hover > .svg-icon {
+    transform: translateY(100px);
+    filter: drop-shadow(#fff 0 -100px);
+}
+
+/* font-face */
+@font-face {
+    font-family: 'SarasaGothicSC';
+    src: url('../font/SarasaGothicSC-Regular.ttf');
+}
