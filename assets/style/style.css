@@ -30,12 +30,12 @@ tr.th-spacing > th.dot {
 }
 
 .root {
+    background-color: #FFF6F7;
     padding: 20px;
     pointer-events: none;
 }
 
 #bishoujo-table {
-    background-color: #FFF6F7;
     border-collapse: collapse;
 }
 
