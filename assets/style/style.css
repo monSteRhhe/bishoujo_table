@@ -1,46 +1,54 @@
 * {
+    box-sizing: border-box;
+}
+
+body,
+html {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+}
+
+html {
+    font-family: 'SarasaGothicSC';
+    font-size: 16px;
 }
 
 body {
     background-color: #FFF6F7;
-    font-size: 16px;
     user-select: none;
-    font-family: 'SarasaGothicSC';
 }
 
-th {
+td {
     max-width: 120px;
     min-width: 120px;
     font-weight: normal;
-}
-
-tr.th-spacing > th {
-    padding: 6px 0;
+    text-align: center;
 }
 
 .blank {
-    padding: 1em 0 !important;
+    padding: 1rem 0 !important;
 }
 
-tr.th-spacing > th.dot {
-    font-size: 1em;
+.td-spacing > td {
+    padding: 6px 0;
+}
+
+.td-spacing > td.dot {
+    font-size: 1rem;
 }
 
 .root {
     padding: 20px;
-    pointer-events: none;
+    overflow: auto;
 }
 
 .container {
     background-color: #FFF6F7;
-    width: fit-content;
     padding: 10px 0;
+    width: fit-content;
 }
 
-#bishoujo-table {
+.bishoujo-table {
     border-collapse: collapse;
 }
 
@@ -51,12 +59,12 @@ tr.th-spacing > th.dot {
 }
 
 .footer {
-    padding: 1em 1.5em;
+    padding: 1rem 1.5rem;
     border-top: 1px solid #000;
 }
 
 .footer span {
-    margin-left: 2em;
+    margin-left: 2rem;
     padding: 2px;
     display: inline-flex;
     cursor: pointer;
@@ -69,7 +77,7 @@ tr.th-spacing > th.dot {
     transition: all 0.3s ease;
 }
 
-img.svg-icon {
+.svg-icon {
     margin-right: 5px;
 }
 
@@ -82,4 +90,21 @@ img.svg-icon {
 @font-face {
     font-family: 'SarasaGothicSC';
     src: url('../font/SarasaGothicSC-Regular.ttf');
+}
+
+/* 滚动条 */
+::-webkit-scrollbar {
+    width: 5px !important;
+    height: 5px !important;
+}
+
+::-webkit-scrollbar-corner,
+::-webkit-scrollbar-track {
+    background: transparent !important;
+}
+
+::-webkit-resizer,
+::-webkit-scrollbar-thumb {
+    background: #aaa;
+    border-radius: 3px;
 }

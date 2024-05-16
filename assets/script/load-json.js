@@ -11,7 +11,7 @@ function loadJSON(path) {
         url: path,
         dataType: 'json',
         async: false,
-        success: function(data) {
+        success: (data) => {
             json = data;
         }
     })
@@ -30,52 +30,66 @@ let table_frame = loadJSON('table_frame.json'),
  * @param {string} lang 选择语言 'jp'/'cn'
  */
 function loadData(lang) {
-    let tr0 = document.createElement('tr');
-    tr0.innerHTML += '<th></th>'; // 空1格
-    let tr1 = document.createElement('tr');
-    tr1.innerHTML += '<th></th>';
+    let tr0 = document.createElement('tr'),
+        tr1 = document.createElement('tr'),
+        empty_td = '<td></td>';
+        
+    $(tr0).append(empty_td); // 空1格
+    $(tr1).append(empty_td);
+
     for (let item of row) {
         /* 立绘 */
         if (item.tachie !== '') {
-            tr0.innerHTML += `<th><image class="display-tachie" src="assets/tachie/${item.tachie}"/></th>`;
+            $(tr0).append(`<td><image class="display-tachie" src="assets/tachie/${item.tachie}"/></td>`);
         } else {
-            tr0.innerHTML += `<th></th>`;
+            $(tr0).append(empty_td);
         }
-        $('table#bishoujo-table').append(tr0);
+        $('table.bishoujo-table').append(tr0);
 
         /* 角色名 */
-        tr1.innerHTML += `<th>${item[lang]}</th>`;
-        $('table#bishoujo-table').append(tr1);
+        $(tr1).append(`<td>${item[lang]}</td>`);
+        $('table.bishoujo-table').append(tr1);
     }
 
     /* 对应 */
     for (let i = 0; i < column_num; i++) {
         let _tr = document.createElement('tr');
-        _tr.className += 'th-spacing';
-        _tr.innerHTML += `<th>${column[i][lang]}</th>`; // 第1列: hs类型
+        $(_tr).addClass('td-spacing');
+        $(_tr).append(`<td>${column[i][lang]}</td>`); // 第1列: hs类型
 
         let key = column[i]['jp'];
         if (key != '') {
             for (let j = 0; j < characters_num; j++) {
-                let jp_name = row[j]['jp'];
+                let jp_name = row[j]['jp']; // 对应日文名称
                 if (character_hs[key][jp_name] == 1) {
-                    _tr.innerHTML += '<th class="dot">●</th>'; // ●
+                    $(_tr).append('<td class="dot">●</td>'); // ●
                 } else {
-                    _tr.innerHTML += '<th></th>'; // 空内容
+                    $(_tr).append(empty_td);
                 }
             }
         } else {
-            _tr.innerHTML += '<th class="blank"></th>'; // 中间的空行
+            $(_tr).append('<td class="blank"></td>'); // 中间的空行
         }
-        $('table#bishoujo-table').append(_tr);
+        $('table.bishoujo-table').append(_tr);
     }
 }
 
 /* 默认先加载jp */
 loadData('jp');
 
-/* 切换中文 */
-$('span.switch-cn').click(function() {
-    $('table#bishoujo-table').empty(); // 清空内容
-    loadData('cn');
+/* 语言切换 */
+let switcher = 'span.lang-switch',
+    icon = '<img class="svg-icon" src="assets/icon/lang-switch.svg"/>';
+$(switcher).click(() => {
+    $('table.bishoujo-table').empty(); // 清空内容
+
+    if ($(switcher).hasClass('cn')) {
+        // 切换为日文
+        $(switcher).removeClass('cn').html(icon + '切换中文');
+        loadData('jp');
+    } else {
+        // 切换为中文
+        $(switcher).addClass('cn').html(icon + '切换日文');
+        loadData('cn');
+    }
 })
