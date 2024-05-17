@@ -89,7 +89,7 @@ td {
 /* font-face */
 @font-face {
     font-family: 'SarasaGothicSC';
-    src: url('../font/SarasaGothicSC-Regular.ttf');
+    src: url('https://github.com/monSteRhhe/bishoujo_table/raw/main/assets/font/SarasaGothicSC-Regular.ttf');
 }
 
 /* 滚动条 */
