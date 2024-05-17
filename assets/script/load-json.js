@@ -23,8 +23,7 @@ let table_frame = loadJSON('table_frame.json'),
     row = table_frame['row_characters'],
     column = table_frame['col_types'],
     characters_num = row.length, // 角色数
-    column_num = column.length, // h类型数
-    cdn_url_prefix = 'https://cdn.jsdelivr.net/gh/monSteRhhe/bishoujo_table/';
+    column_num = column.length; // h类型数
 
 /**
  * 加载对应语言内容
@@ -41,7 +40,7 @@ function loadData(lang) {
     for (let item of row) {
         /* 立绘 */
         if (item.tachie !== '') {
-            $(tr0).append(`<td><image class="display-tachie" src="${cdn_url_prefix}assets/tachie/${item.tachie}"/></td>`);
+            $(tr0).append(`<td><image class="display-tachie" src="assets/tachie/${item.tachie}"/></td>`);
         } else {
             $(tr0).append(empty_td);
         }
@@ -80,7 +79,7 @@ loadData('jp');
 
 /* 语言切换 */
 let switcher = 'span.lang-switch',
-    icon = `<img class="svg-icon" src="${cdn_url_prefix}/assets/icon/lang-switch.svg"/>`;
+    icon = `<img class="svg-icon" src="assets/icon/lang-switch.svg"/>`;
 $(switcher).click(() => {
     $('table.bishoujo-table').empty(); // 清空内容
 
